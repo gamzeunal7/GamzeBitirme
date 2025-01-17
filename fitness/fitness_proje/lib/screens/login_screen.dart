@@ -1,6 +1,6 @@
-import 'package:fitness_proje/screens/fourth_screen.dart';
-import 'package:fitness_proje/screens/second_screen.dart'; //ileri gitmesi için import
+import 'package:fitness_proje/screens/eight_screen.dart'; // EightScreen'i import et
 import 'package:fitness_proje/screens/home_screen.dart'; // tıkladığında anasayfaya gitmesi için import
+import 'package:fitness_proje/screens/fourth_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => FourthScreen(),
+          builder: (context) => FourthScreen(), //
         ),
       );
     }
@@ -73,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   _saveUserToDevice();
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SecondScreen()),
+                    MaterialPageRoute(builder: (context) => EightScreen()),
                   );
                 },
                 child: const Text("Giriş Yap"),
@@ -106,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
           } else if (index == 1) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => SecondScreen()),
+              MaterialPageRoute(builder: (context) => EightScreen()),
             );
           }
         },

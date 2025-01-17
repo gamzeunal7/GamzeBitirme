@@ -1,16 +1,28 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()  // Flutter Gradle plugin'inin bulunduğu başka bir repo olabilir
+    }
+    dependencies {
+        // Android Gradle Plugin sürümü
+        classpath 'com.android.tools.build:gradle:8.2.1'
+        // Flutter Gradle Plugin sürümü (uygun sürüm)
+        classpath 'com.google.gms:google-services:4.3.15'  // Firebase ve Google servisleri için (gerekirse)
+    }
+}
+
 allprojects {
     repositories {
         google()
         mavenCentral()
+        jcenter()  // Flutter Gradle plugin'in de yer aldığı repo
     }
 }
 
 rootProject.buildDir = "../build"
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
-}
-subprojects {
-    project.evaluationDependsOn(":app")
 }
 
 tasks.register("clean", Delete) {

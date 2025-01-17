@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_charts/charts.dart'; // Syncfusion Chart kütüphanesi
+import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:fitness_proje/screens/eight_screen.dart';
+import 'package:fitness_proje/screens/home_screen.dart';
 
 void main() {
   runApp(const SeventhScreen());
@@ -15,7 +17,8 @@ class SeventhScreen extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Günlük Alınan Besin Değerleri'),
+      home: const MyHomePage(title: 'Günlük Alınan Besin Değerleri(kcal)'),
+      debugShowCheckedModeBanner: false, // Debug banner'ı gizler
     );
   }
 }
@@ -44,10 +47,16 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back), // Geri butonu
+          onPressed: () {
+            Navigator.pop(context); // Bir önceki ekrana dön
+          },
+        ),
       ),
       body: SfCircularChart(
         title: ChartTitle(
-          text: 'Protein,Karbonhidrat,Yağ',
+          text: 'Protein, Karbonhidrat, Yağ, Su, Vitamin',
         ),
         legend: Legend(
           isVisible: true,
@@ -65,6 +74,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
+      bottomNavigationBar:
+          _buildBottomNavigationBar(context), // Bottom Navigation Bar ekle
     );
   }
 
@@ -72,11 +83,48 @@ class _MyHomePageState extends State<MyHomePage> {
     final List<GDPData> chartData = [
       GDPData('Protein', 15000),
       GDPData('Karbonhidrat', 12200),
-      GDPData('Yağ', 7000),
+      GDPData('Yağ', 15000),
       GDPData('Vitamin', 21000),
-      GDPData('Su', 7500),
+      GDPData('Su', 10000),
     ];
     return chartData;
+  }
+
+  BottomNavigationBar _buildBottomNavigationBar(BuildContext context) {
+    return BottomNavigationBar(
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.home,
+            size: 30,
+          ),
+          label: 'Anasayfa',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.menu, size: 30),
+          label: 'Menü',
+        ),
+      ],
+      currentIndex: 0, // Anasayfa item
+      onTap: (index) {
+        if (index == 0) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => HomeScreen()), // Anasayfaya geçiş
+          );
+        } else if (index == 1) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const EightScreen()), // Menüye geçiş
+          );
+        }
+      },
+      selectedItemColor: Colors.white, // Seçili öğenin rengi
+      unselectedItemColor: Colors.white, // Seçili olmayan öğelerin rengi
+      backgroundColor: Colors.blueGrey[900],
+    );
   }
 }
 

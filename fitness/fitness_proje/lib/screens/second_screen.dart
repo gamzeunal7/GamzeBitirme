@@ -35,7 +35,7 @@ class _SecondScreenState extends State<SecondScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(79, 130, 130, 204),
+      backgroundColor: const Color.fromARGB(79, 182, 182, 203),
       appBar: AppBar(
         title: const Text('Egzersiz Set Sayacı'),
       ),

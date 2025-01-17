@@ -1,4 +1,4 @@
-import 'package:fitness_proje/screens/second_screen.dart';
+import 'package:fitness_proje/screens/eight_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -42,7 +42,7 @@ class _FourthScreenState extends State<FourthScreen> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SecondScreen()),
+                  MaterialPageRoute(builder: (context) => EightScreen()),
                 );
               },
               child: Text('Devam Et'),

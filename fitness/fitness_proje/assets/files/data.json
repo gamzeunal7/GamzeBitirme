@@ -47,6 +47,12 @@
             "kategori": 3,
             "isim": "Meyve Suyu 120 Kalori",
             "resim": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Orange_juice_1.jpg"
+        },
+        {
+            "id": 20,
+            "kategori": 3,
+            "isim": "Şekersiz Sütlü Kahve 70 Kalori",
+            "resim": "https://upload.wikimedia.org/wikipedia/commons/4/41/Coffee_with_milk_%28563800%29.jpg"
         }
     ],
     "kategoriler": [

@@ -16,6 +16,34 @@ class _SixthScreenState extends State<SixthScreen> {
   double _sonuc = 0.0;
   String _hataMesaji = '';
 
+  String _getBMICategory() {
+    if (_sonuc < 18.5) {
+      return "Zayıf";
+    } else if (_sonuc >= 18.5 && _sonuc < 24.9) {
+      return "Normal";
+    } else if (_sonuc >= 25 && _sonuc < 29.9) {
+      return "Kilolu";
+    } else if (_sonuc >= 30) {
+      return "Obez";
+    } else {
+      return "";
+    }
+  }
+
+  Color _getBMICategoryColor() {
+    if (_sonuc < 18.5) {
+      return Colors.blueAccent; // Zayıf için renk
+    } else if (_sonuc >= 18.5 && _sonuc < 24.9) {
+      return Colors.green; // Normal için renk
+    } else if (_sonuc >= 25 && _sonuc < 29.9) {
+      return Colors.orange; // Kilolu için renk
+    } else if (_sonuc >= 30) {
+      return Colors.red; // Obez için renk
+    } else {
+      return Colors.transparent;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +67,26 @@ class _SixthScreenState extends State<SixthScreen> {
                   _hataMesaji,
                   style: const TextStyle(color: Colors.red, fontSize: 16),
                   textAlign: TextAlign.center,
+                ),
+              ),
+            if (_sonuc > 0) // Eğer BMI hesaplanmışsa kutucuk gösterilecek
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: Container(
+                  padding: const EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    color: _getBMICategoryColor(),
+                    borderRadius:
+                        BorderRadius.circular(12), // Yuvarlatılmış köşeler
+                  ),
+                  child: Text(
+                    _getBMICategory(),
+                    style: const TextStyle(
+                      fontSize: 24,
+                      color: Colors.white, // Yazı rengi beyaz
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
             const SizedBox(height: 16),

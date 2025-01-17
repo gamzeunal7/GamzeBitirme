@@ -1,0 +1,14 @@
+def flutterRoot = rootProject.projectDir.parentFile.toPath().resolve("flutter").toFile()
+def flutter = new Properties()
+def flutterFile = flutterRoot.toPath().resolve("version.properties").toFile()
+if (flutterFile.exists()) {
+    flutterFile.withReader("UTF-8") { reader -> flutter.load(reader) }
+}
+ext.flutter = [
+        compileSdkVersion: flutter.getProperty("compileSdkVersion", "33").toInteger(),
+        targetSdkVersion : flutter.getProperty("targetSdkVersion", "33").toInteger(),
+        minSdkVersion    : flutter.getProperty("minSdkVersion", "21").toInteger(),
+        versionCode      : flutter.getProperty("versionCode", "1").toInteger(),
+        versionName      : flutter.getProperty("versionName", "1.0"),
+        ndkVersion       : flutter.getProperty("ndkVersion", "21.4.7075529")
+]
